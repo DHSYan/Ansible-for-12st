@@ -1,0 +1,5 @@
+username: tzen
+packages:
+  - neovim
+  - tmux
+  - speedtest-cli
