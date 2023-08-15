@@ -1,0 +1,6 @@
+- name: Install Ifupdown
+  apt:
+    name:
+      - "ifupdown"
+    state: lastest
+

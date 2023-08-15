@@ -3,4 +3,6 @@
   become: yes
 
   tasks:
-    - import_tasks: ./tasks/essentials.yml
+    - import_tasks: 
+      - ./tasks/essentials.yml
+      - ./tasks/wakeonlan.yml
