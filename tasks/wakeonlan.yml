@@ -12,5 +12,5 @@
   ansible.builtin.lineinfile:
     path: /etc/network/interfaces
     insertafter: "EOF"
-    line: "auto lo\niface lo inet loopback\n\nauto eth0\niface eth0 inet static\n    address 10.0.0.1\n    netmask 255.255.255.0\n    gateway 10.0.0.138\n    up ethtool -s eth0 wol g\n"
+    line: "auto lo\niface lo inet loopback\n\nauto enp30s0\niface enp30s0 inet static\n    address 192.168.1.101\n    netmask 255.255.255.0\n    gateway 192.168.1.1\n    up ethtool -s enp30s0 wol g\n"
 
