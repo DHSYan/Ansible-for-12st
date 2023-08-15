@@ -1,6 +1,16 @@
 - name: Install Ifupdown
-  apt:
+  package:
     name:
       - "ifupdown"
-    state: lastest
+    state: latest
+
+- name: Enable WakeonLan with Ethtool
+  ansible.builtin.shell:
+    cmd: "sudo ethtool -s enp30s0 wol g"
+
+- name: Keep the wakeonlan presistent on boot
+  ansible.builtin.lineinfile:
+    path: /etc/network/interfaces
+    insertafter: "EOF"
+    line: "auto lo\niface lo inet loopback\n\nauto eth0\niface eth0 inet static\n    address 10.0.0.1\n    netmask 255.255.255.0\n    gateway 10.0.0.138\n    up ethtool -s eth0 wol g\n"
 

@@ -3,3 +3,4 @@ packages:
   - neovim
   - tmux
   - speedtest-cli
+  - net-tools
