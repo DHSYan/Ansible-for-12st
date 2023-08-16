@@ -9,8 +9,25 @@
     cmd: "sudo ethtool -s enp30s0 wol g"
 
 - name: Keep the wakeonlan presistent on boot
-  ansible.builtin.lineinfile:
+  ansible.builtin.blockinfile:
     path: /etc/network/interfaces
-    insertafter: "EOF"
-    line: "auto lo\niface lo inet loopback\n\nauto enp30s0\niface enp30s0 inet static\n    address 192.168.1.101\n    netmask 255.255.255.0\n    gateway 192.168.1.1\n    up ethtool -s enp30s0 wol g\n"
+    block: |
+      auto lo
+      iface lo inet loopback
 
+      auto enp30s0
+      iface enp30s0 inet static
+          address 192.168.1.101
+          netmask 255.255.255.0
+          gateway 192.168.1.1
+          up ethtool -s enp30s0 wol g
+
+# - name: Testing lineinfine
+#   ansible.builtin.blockinfile:
+#     path: /home/tzen/test.md
+#     block: |
+#       Change this or 
+#       that 
+#       or don't do anying at all
+#         or lol
+#             this is troll
